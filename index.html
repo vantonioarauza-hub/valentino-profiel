@@ -7,20 +7,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
+  <!-- GSAP Core & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
   <!-- Top Banner -->
-  <div class="banner-wrapper">
+  <div class="banner-wrapper gs-reveal">
+    <div class="banner-overlay"></div>
     <img src="bgimage.png" alt="Header Banner" class="banner-img" onerror="this.src='polaroid1.jpg'">
   </div>
 
   <main class="notion-container">
 
     <!-- Header Section -->
-    <header class="doc-header">
+    <header class="doc-header gs-reveal">
       <div class="avatar-anchor">
         <img src="valentino.png" alt="Valentino" id="portraitImg">
         <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
@@ -43,7 +46,7 @@
       <section class="grid-col">
 
         <!-- Character Profile -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">➔</span>
             <h2>STUDENT DOSSIER</h2>
@@ -52,6 +55,7 @@
             <li><strong>Full Name:</strong> Valentino De La Cruz</li>
             <li><strong>Japanese Kanji:</strong> ヴァレンティノ・デ・ラ・クルス</li>
             <li><strong>Birthday:</strong> December 7th (16 years old)</li>
+            <li><strong>Voice Claim:</strong> Yuichi Nakamura (Satoru Gojo) 🎙️</li>
             <li><strong>Build & Height:</strong> 6'1" (185 cm) • Lean, athletic dancer build</li>
             <li><strong>Features:</strong> White hair, Honey/Yellow eyes</li>
             <li><strong>Scent:</strong> JPG Le Beau Le Parfum (Coconut & Ocean Breeze)</li>
@@ -60,7 +64,7 @@
         </div>
 
         <!-- Deep Lore & Family Backstory -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">📜</span>
             <h2>FAMILY & COLÓN ROOTS</h2>
@@ -78,7 +82,7 @@
       <section class="grid-col">
 
         <!-- The Untouchable Rumor & Dodge Game -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card interactive-highlight">
           <div class="card-heading">
             <span class="icon">💨</span>
             <h2>THE "UNTOUCHABLE" RUMOR</h2>
@@ -89,13 +93,13 @@
           </div>
 
           <div class="interactive-row">
-            <button id="punchBtn" class="notion-btn">Throw a Punch</button>
+            <button id="punchBtn" class="notion-btn pulse-btn">Throw a Punch</button>
             <span class="miss-text"><strong class="miss-count">0</strong> misses</span>
           </div>
         </div>
 
         <!-- Likes & Dislikes -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">✨</span>
             <h2>LIKES & DISLIKES</h2>
@@ -123,7 +127,7 @@
         </div>
 
         <!-- Kazemachi Spots -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">📍</span>
             <h2>KAZEMACHI SPOTS</h2>
@@ -146,7 +150,7 @@
       <section class="grid-col">
 
         <!-- Playlist Widget -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">🎧</span>
             <h2>2008 MP3 PLAYLIST</h2>
@@ -168,7 +172,7 @@
         </div>
 
         <!-- Interactive Messenger Bag -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">🎒</span>
             <h2>MESSENGER BAG</h2>
@@ -187,35 +191,35 @@
         </div>
 
         <!-- Polaroid Scrapbook -->
-        <div class="notion-card">
+        <div class="notion-card gs-reveal tilt-card">
           <div class="card-heading">
             <span class="icon">📸</span>
-            <h2>SCRAPBOOK</h2>
+            <h2>AESTHETIC MOODBOARD</h2>
           </div>
           <div class="polaroid-grid">
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid1.jpg" alt="Photo 1" onerror="this.src='valentino.png'"></div>
+              <div class="polaroid-img-box"><img src="polaroid1.jpg" alt="Vibe 1" onerror="this.src='valentino.png'"></div>
               <span class="polaroid-caption">Seawall</span>
             </div>
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid2.jpg" alt="Photo 2" onerror="this.src='valentino.png'"></div>
+              <div class="polaroid-img-box"><img src="polaroid2.jpg" alt="Vibe 2" onerror="this.src='valentino.png'"></div>
               <span class="polaroid-caption">Grandma Marta's</span>
             </div>
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid3.jpg" alt="Photo 3" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Fish Market</span>
+              <div class="polaroid-img-box"><img src="polaroid3.jpg" alt="Vibe 3" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Pescao Frito</span>
             </div>
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid4.jpg" alt="Photo 4" onerror="this.src='valentino.png'"></div>
+              <div class="polaroid-img-box"><img src="polaroid4.jpg" alt="Vibe 4" onerror="this.src='valentino.png'"></div>
               <span class="polaroid-caption">Headphones</span>
             </div>
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid5.jpg" alt="Photo 5" onerror="this.src='valentino.png'"></div>
+              <div class="polaroid-img-box"><img src="polaroid5.jpg" alt="Vibe 5" onerror="this.src='valentino.png'"></div>
               <span class="polaroid-caption">Street Fits</span>
             </div>
             <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid6.jpg" alt="Photo 6" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Night Walks</span>
+              <div class="polaroid-img-box"><img src="polaroid6.jpg" alt="Vibe 6" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">JPG Cologne</span>
             </div>
           </div>
         </div>
