@@ -1,6 +1,5 @@
 /* ================================================================
-   NOTION / CARRD HUMAN OC PROFILE STYLE
-   Clean, Warm Off-White, Editorial Typography
+   NOTION / CARRD HUMAN OC PROFILE STYLE (FULL MEDIA VERSION)
    ================================================================ */
 
 * {
@@ -18,7 +17,6 @@ body {
   min-height: 100vh;
 }
 
-/* Banner Top Image */
 .banner-wrapper {
   width: 100%;
   height: 220px;
@@ -33,9 +31,8 @@ body {
   object-position: center;
 }
 
-/* Page Container */
 .notion-container {
-  max-width: 840px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 24px 80px;
   position: relative;
@@ -49,13 +46,13 @@ body {
 
 .avatar-anchor {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 108px;
+  height: 108px;
   border-radius: 12px;
   overflow: hidden;
   background: #ffffff;
   border: 3px solid #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   margin-bottom: 16px;
 }
 
@@ -75,7 +72,7 @@ body {
   font-weight: 700;
   color: #ffffff;
   background: #1a1a1a;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 4px;
   opacity: 0;
   pointer-events: none;
@@ -110,7 +107,7 @@ body {
 /* Grid Layout */
 .content-grid {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 1fr 290px;
   gap: 24px;
 }
 
@@ -130,7 +127,7 @@ body {
 }
 
 .card-heading .icon {
-  font-size: 12px;
+  font-size: 13px;
   color: #787774;
 }
 
@@ -140,6 +137,12 @@ body {
   letter-spacing: 1px;
   color: #787774;
   text-transform: uppercase;
+}
+
+.section-subdesc {
+  font-size: 12px;
+  color: #787774;
+  margin-bottom: 14px;
 }
 
 .bio-list {
@@ -168,9 +171,172 @@ body {
 .card-text .subtext {
   color: #787774;
   font-size: 12.5px;
+  display: block;
+  margin-top: 6px;
 }
 
-/* Interactive Elements */
+/* Polaroid Grid */
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.polaroid-item {
+  background: #ffffff;
+  padding: 8px 8px 12px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.polaroid-item:hover {
+  transform: translateY(-3px) rotate(1deg);
+}
+
+.polaroid-img-box {
+  width: 100%;
+  height: 100px;
+  background: #eae8e3;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.polaroid-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.polaroid-caption {
+  font-size: 10px;
+  color: #787774;
+  margin-top: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Map Pinboard */
+.map-pins-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map-pin-item {
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border-left: 3px solid #1a1a1a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.pin-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.map-pin-item p {
+  font-size: 12px;
+  color: #787774;
+  margin-top: 2px;
+}
+
+/* Multi-Track Audio Player */
+.player-widget {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0ded9;
+}
+
+.now-playing-info {
+  margin-bottom: 10px;
+}
+
+.track-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #787774;
+  letter-spacing: 0.5px;
+}
+
+.track-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.player-btn {
+  background: #f7f6f3;
+  border: 1px solid #e0ded9;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #37352f;
+  transition: all 0.15s ease;
+}
+
+.player-btn.main {
+  flex-grow: 1;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+}
+
+.player-btn:hover {
+  opacity: 0.9;
+}
+
+/* Interactive Bag List */
+.interactive-bag-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.bag-item {
+  font-size: 12.5px;
+  background: #ffffff;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #e0ded9;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.bag-item:hover {
+  background: #f0eee9;
+}
+
+.bag-inspector-box {
+  font-size: 11.5px;
+  color: #4a4e69;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 2px solid #787774;
+  font-style: italic;
+  min-height: 48px;
+}
+
+/* Interactive Evasion Row */
 .interactive-row {
   margin-top: 16px;
   display: flex;
@@ -191,51 +357,13 @@ body {
   border-radius: 6px;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  transition: all 0.15s ease;
 }
 
-.notion-btn:hover {
-  background: #f0eee9;
-  border-color: #d0cecf;
-}
+.miss-text { font-size: 12px; color: #787774; }
+.miss-count { font-family: 'Space Mono', monospace; color: #1a1a1a; }
+.notes-list { padding-left: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #37352f; }
 
-.notion-btn.full {
-  width: 100%;
-  margin-top: 8px;
-}
-
-.miss-text {
-  font-size: 12px;
-  color: #787774;
-}
-
-.miss-count {
-  font-family: 'Space Mono', monospace;
-  color: #1a1a1a;
-}
-
-/* Sidebar Specifics */
-.side-card {
-  padding: 16px;
-}
-
-.side-desc {
-  font-size: 12px;
-  color: #787774;
-}
-
-.notes-list {
-  padding-left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 13px;
-  color: #37352f;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 720px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .polaroid-grid { grid-template-columns: repeat(2, 1fr); }
 }
