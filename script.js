@@ -1,7 +1,7 @@
-// Pop in the whole profile card smoothly on page load
+// Pop in the profile card smoothly on page load
 gsap.from(".profile-card", {
   duration: 1.2,
-  y: 50,
+  y: 40,
   opacity: 0,
   ease: "power3.out"
 });
@@ -20,30 +20,30 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
-// Dodge Mechanic (Simulating his unique flow ability)
+// Dodge Mechanic (Simulating Las Cintas movement)
 const attackBtn = document.getElementById('attackBtn');
 const valImg = document.getElementById('valentinoImg');
 const dodgeText = document.getElementById('dodgeText');
 
 const dodgeMessages = [
-  "DODGED!",
-  "TOO SLOW!",
-  "NOT EVEN CLOSE",
-  "MISSED!",
-  "HE'S NOT EVEN LOOKING"
+  "LAS CINTAS FLOW!",
+  "TOO SLOW, BRO!",
+  "QUE SOPA? MISSED!",
+  "DIDN'T EVEN LOOK!",
+  "QUE PASÓ, BRO?"
 ];
 
 attackBtn.addEventListener('click', () => {
-  // Randomize dodge direction slightly
-  const xShift = (Math.random() - 0.5) * 60;
+  // Shift direction randomly
+  const xShift = (Math.random() - 0.5) * 70;
   
-  // Pick a random message
+  // Pick a random Japaspanish dodge quote
   dodgeText.innerText = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 
-  // Animate Valentino slipping out of the way effortlessly
+  // Animate Valentino slipping out of the way using fluid ribbon-like motion
   gsap.timeline()
-    .to(valImg, { x: xShift, duration: 0.15, ease: "power2.out" })
-    .to(dodgeText, { opacity: 1, y: -20, duration: 0.2 }, "<")
-    .to(valImg, { x: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }, "+=0.1")
-    .to(dodgeText, { opacity: 0, y: -40, duration: 0.3 }, "<");
+    .to(valImg, { x: xShift, rotation: xShift / 10, duration: 0.15, ease: "power2.out" })
+    .to(dodgeText, { opacity: 1, y: -25, duration: 0.2 }, "<")
+    .to(valImg, { x: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1, 0.4)" }, "+=0.1")
+    .to(dodgeText, { opacity: 0, y: -45, duration: 0.3 }, "<");
 });
