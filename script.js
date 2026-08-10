@@ -2,11 +2,11 @@
 let missCount = 0;
 let currentTrackIndex = 0;
 
-// Playlist Data
+// Tracklist with Real Songs
 const playlist = [
-  { title: "01. Coastal Vibe (Lofi)", src: "track1.mp3" },
-  { title: "02. Panama Beats (Latin Rhythm)", src: "track2.mp3" },
-  { title: "03. Kazemachi Sunset (Ambient)", src: "track3.mp3" }
+  { title: "01. Bad Bunny – Tití Me Preguntó", src: "track1.mp3" },
+  { title: "02. Sech – Otro Trago", src: "track2.mp3" },
+  { title: "03. Sech – Romance", src: "track3.mp3" }
 ];
 
 // DOM Elements
