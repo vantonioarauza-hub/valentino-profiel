@@ -10,31 +10,45 @@ const missCountEl = document.querySelector('.miss-count');
 const dodgeIndicator = document.getElementById('dodgeIndicator');
 const controlText = document.querySelector('.control-text');
 
-// Audio Toggle
+// Audio Toggle Logic
 if (musicBtn && audio) {
   musicBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
       controlText.textContent = 'Pause BGM';
-      musicBtn.style.background = '#ffffff';
-      musicBtn.style.color = '#000000';
+      musicBtn.style.background = '#2b2d42';
+      musicBtn.style.color = '#ffffff';
     } else {
       audio.pause();
       controlText.textContent = 'Play BGM';
-      musicBtn.style.background = 'rgba(255, 255, 255, 0.08)';
-      musicBtn.style.color = '#ffffff';
+      musicBtn.style.background = 'rgba(255, 255, 255, 0.85)';
+      musicBtn.style.color = '#2b2d42';
     }
   });
 }
 
-// Dodge Mechanics
+// Interactive Evasion / Las Cintas Mechanic
 const dodgeMessages = [
-  'DODGED!',
-  'TOO SLOW!',
-  'QUÉ SOPA?',
-  'LAS CINTAS!',
-  'MISSED!',
-  'TRANQUILO!'
+  'CHUCHA.',
+  'QUÉ FUE?',
+  'NI CERCA.',
+  'TAS LENTO.',
+  'TE FUISTE.',
+  'MUY TARDE.',
+  'NO ME VISTE.',
+  'SUAVE.',
+  'TRANQUI.',
+  'PURA BULLA.',
+  'TE LEÍ.',
+  'FÁCIL.',
+  'YA PUES.',
+  'CÁLMATE.',
+  'POR FAVOR.',
+  '¿ESO ERA?',
+  'CASI.',
+  'FALLASTE.',
+  'MUY OBVIO.',
+  'NO LLEGASTE.'
 ];
 
 if (punchBtn && portraitImg) {
@@ -48,9 +62,8 @@ if (punchBtn && portraitImg) {
 
     punchBtn.disabled = true;
 
-    // Fluid GSAP evasion shift
-    const xShift = (Math.random() - 0.5) * 60;
-    const yShift = (Math.random() - 0.5) * 30;
+    const xShift = (Math.random() - 0.5) * 50;
+    const yShift = (Math.random() - 0.5) * 25;
     const message = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 
     gsap.timeline()
