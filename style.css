@@ -1,5 +1,5 @@
 /* ================================================================
-   BALANCED SIDE-BY-SIDE DASHBOARD LAYOUT
+   VALENTINO DE LA CRUZ - 3-COLUMN ULTRA-RESPONSIVE DASHBOARD
    ================================================================ */
 
 * {
@@ -19,7 +19,7 @@ body {
 
 .banner-wrapper {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   background: #e8e6e1;
 }
@@ -29,17 +29,22 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.banner-wrapper:hover .banner-img {
+  transform: scale(1.02);
 }
 
 .notion-container {
-  max-width: 980px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 20px 60px;
 }
 
 /* Header */
 .doc-header {
-  margin-top: -45px;
+  margin-top: -48px;
   margin-bottom: 24px;
   display: flex;
   gap: 20px;
@@ -48,13 +53,13 @@ body {
 
 .avatar-anchor {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 108px;
+  height: 108px;
   border-radius: 12px;
   overflow: hidden;
   background: #ffffff;
   border: 3px solid #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
 
@@ -87,14 +92,14 @@ body {
 }
 
 .character-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: #1a1a1a;
   letter-spacing: -0.5px;
 }
 
 .subtitle {
-  font-size: 12.5px;
+  font-size: 13px;
   color: #787774;
   font-weight: 500;
 }
@@ -109,10 +114,10 @@ body {
   color: #37352f;
 }
 
-/* Equal-Width Balanced Grid */
-.content-grid {
+/* Ultra-Smooth 3-Column Layout */
+.content-grid-3col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -123,11 +128,17 @@ body {
   gap: 18px;
 }
 
-/* Cards */
+/* Cards & Micro-Interactions */
 .notion-card {
   background: #f7f6f3;
   border-radius: 8px;
   padding: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
 }
 
 .card-heading {
@@ -196,6 +207,11 @@ body {
   padding: 10px 12px;
   border-radius: 6px;
   border-left: 3px solid #1a1a1a;
+  transition: background 0.15s ease;
+}
+
+.map-pin-item:hover {
+  background: #f0eee9;
 }
 
 .pin-title {
@@ -230,7 +246,7 @@ body {
 }
 
 .track-title {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #1a1a1a;
   white-space: nowrap;
@@ -266,7 +282,7 @@ body {
   opacity: 0.9;
 }
 
-/* Messenger Bag List */
+/* Interactive Bag List */
 .interactive-bag-list {
   list-style: none;
   display: flex;
@@ -278,15 +294,17 @@ body {
 .bag-item {
   font-size: 12px;
   background: #ffffff;
-  padding: 7px 10px;
+  padding: 8px 10px;
   border-radius: 4px;
   border: 1px solid #e0ded9;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .bag-item:hover {
-  background: #f0eee9;
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
 }
 
 .bag-inspector-box {
@@ -297,7 +315,7 @@ body {
   border-radius: 4px;
   border-left: 2px solid #787774;
   font-style: italic;
-  min-height: 44px;
+  min-height: 48px;
 }
 
 /* Polaroid Grid */
@@ -315,11 +333,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.polaroid-item:hover {
+  transform: translateY(-3px) rotate(1.5deg);
 }
 
 .polaroid-img-box {
   width: 100%;
-  height: 85px;
+  height: 75px;
   background: #eae8e3;
   overflow: hidden;
   border-radius: 2px;
@@ -332,7 +355,7 @@ body {
 }
 
 .polaroid-caption {
-  font-size: 9.5px;
+  font-size: 9px;
   color: #787774;
   margin-top: 4px;
   text-align: center;
@@ -359,13 +382,25 @@ body {
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.notion-btn:hover {
+  background: #f0eee9;
 }
 
 .miss-text { font-size: 11.5px; color: #787774; }
 .miss-count { font-family: 'Space Mono', monospace; color: #1a1a1a; }
 
-@media (max-width: 768px) {
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .content-grid-3col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
   .doc-header { flex-direction: column; align-items: flex-start; }
-  .content-grid { grid-template-columns: 1fr; }
-  .polaroid-grid { grid-template-columns: repeat(2, 1fr); }
+  .content-grid-3col { grid-template-columns: 1fr; }
+  .polaroid-grid { grid-template-columns: repeat(3, 1fr); }
 }
