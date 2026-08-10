@@ -3,172 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentino De La Cruz | Steam Profile</title>
+  <title>Valentino De La Cruz — OC Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
-  <div class="bg-overlay"></div>
+  <!-- Notion-Style Header Banner -->
+  <div class="banner-wrapper">
+    <img src="bgimage.png" alt="Header Banner" class="banner-img">
+  </div>
 
-  <!-- Main Profile Container -->
-  <div class="steam-container">
+  <main class="notion-container">
 
-    <!-- Profile Header -->
-    <header class="profile-header">
-      <div class="avatar-frame-wrapper">
-        <div class="avatar-box">
-          <img src="valentino.png" alt="Valentino De La Cruz" id="portraitImg">
-          <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
-        </div>
+    <!-- Page Title Header -->
+    <header class="doc-header">
+      <div class="avatar-anchor">
+        <img src="valentino.png" alt="Valentino" id="portraitImg">
+        <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
       </div>
 
-      <div class="header-details">
-        <div class="user-row">
-          <h1 class="username">Valentino</h1>
-          <span class="flag">🇵🇦</span>
-          <span class="location">Panamá ➔ Kazemachi</span>
-        </div>
-        
-        <div class="custom-quote">
-          "Oye bro, <em>sumimasen</em>, but I don't understand <em>nada</em> of this test. <em>Arigatou</em> though!"
-        </div>
+      <h1 class="character-title">Valentino De La Cruz</h1>
+      <p class="subtitle">16 • Panamá ➔ Kazemachi</p>
 
-        <div class="steam-badges-row">
-          <span class="badge-pill">UNTOUCHABLE</span>
-          <span class="badge-pill">LAS CINTAS</span>
-          <span class="badge-pill alt">JAPASPANISH</span>
-        </div>
-      </div>
-
-      <!-- Level & Audio Control -->
-      <div class="header-right">
-        <div class="level-box">
-          <span class="level-title">Level</span>
-          <span class="level-num">100</span>
-        </div>
-
-        <button id="musicToggle" class="steam-btn">
-          <span class="btn-icon">♪</span>
-          <span class="control-text">Play BGM</span>
-        </button>
-        <audio id="bgm" loop src="bgm.mp3"></audio>
-      </div>
+      <blockquote class="quote-callout">
+        "Oye bro, <em>sumimasen</em>, but I don't understand <em>nada</em> of this test. <em>Arigatou</em> though!"
+      </blockquote>
     </header>
 
-    <!-- Main Content Layout -->
-    <div class="profile-body">
+    <!-- Content Grid Layout -->
+    <div class="content-grid">
 
-      <!-- Left Column: Primary Showcase -->
-      <main class="main-column">
+      <!-- Left Column: Character Details -->
+      <section class="left-col">
 
-        <!-- Featured Artwork Showcase -->
-        <section class="showcase-card">
-          <div class="showcase-header">
-            <span class="showcase-title">ARTWORK SHOWCASE</span>
+        <!-- Character Bio Card -->
+        <div class="notion-card">
+          <div class="card-heading">
+            <span class="icon">➔</span>
+            <h2>CHARACTER BIO</h2>
           </div>
-
-          <!-- Main Image / GIF Showcase Area -->
-          <div class="artwork-container">
-            <div class="artwork-main">
-              <img src="valentino.png" alt="Valentino Artwork" class="artwork-img">
-            </div>
-          </div>
-
-          <div class="showcase-content">
-            <div class="showcase-quote">
-              <h3>"The Untouchable"</h3>
-              <p>Operates on 100% instinct and coastal rhythm. Nobody in Kazemachi can read his movement or land a single hit.</p>
-            </div>
-
-            <!-- Evasion Test Mechanic -->
-            <div class="combat-box">
-              <button id="punchBtn" class="steam-action-btn">
-                <span>Throw a Punch</span>
-              </button>
-              <div class="miss-counter">
-                <span class="miss-count">0</span>
-                <span class="miss-label">TOTAL MISSES</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Attributes Grid -->
-        <section class="showcase-card">
-          <div class="showcase-header">
-            <span class="showcase-title">CHARACTER ATTRIBUTES</span>
-          </div>
-
-          <div class="attributes-grid">
-            <div class="attr-item">
-              <span class="attr-label">Fighting Style</span>
-              <span class="attr-value">Las Cintas</span>
-              <span class="attr-sub">Fluid • Evasive</span>
-            </div>
-
-            <div class="attr-item">
-              <span class="attr-label">Evasion Stat</span>
-              <span class="attr-value">100 / 10</span>
-              <span class="attr-sub">Untouchable</span>
-            </div>
-
-            <div class="attr-item">
-              <span class="attr-label">Academics</span>
-              <span class="attr-value">F Grade</span>
-              <span class="attr-sub">Writes name wrong</span>
-            </div>
-
-            <div class="attr-item">
-              <span class="attr-label">Language</span>
-              <span class="attr-value">Japaspanish</span>
-              <span class="attr-sub">100% Confidence</span>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <!-- Right Column: Sidebar -->
-      <aside class="sidebar-column">
-
-        <div class="sidebar-block">
-          <div class="sidebar-title">Currently Offline</div>
-          <div class="sidebar-sub">Last Online 2 hrs ago</div>
+          <ul class="bio-list">
+            <li><strong>Full Name:</strong> Valentino De La Cruz</li>
+            <li><strong>Aliases:</strong> "The Untouchable"</li>
+            <li><strong>Age:</strong> 16</li>
+            <li><strong>Origin:</strong> Panamá</li>
+            <li><strong>Current Location:</strong> Kazemachi, Japan</li>
+            <li><strong>Affiliation:</strong> None (just wandering)</li>
+            <li><strong>Languages:</strong> Spanish, broken English, emergency Japanese</li>
+          </ul>
         </div>
 
-        <div class="sidebar-block">
-          <div class="sidebar-title">Badges</div>
-          <div class="badge-icons">
-            <div class="icon-slot">🇵🇦</div>
-            <div class="icon-slot">⚡</div>
-            <div class="icon-slot">💨</div>
+        <!-- Combat / Movement Style -->
+        <div class="notion-card">
+          <div class="card-heading">
+            <span class="icon">➔</span>
+            <h2>HOW HE MOVES</h2>
+          </div>
+          <div class="card-text">
+            <p>He doesn't fight like the local gangs in Kazemachi. His movement comes entirely from coastal rhythm—slipping, swaying, and stepping out of range before anyone finishes a swing.</p>
+            <p class="subtext">People in town think he's some quiet martial arts prodigy, but he's usually just listening to music and totally oblivious to the drama.</p>
+          </div>
+
+          <!-- Interactive Dodge Mechanic -->
+          <div class="interactive-row">
+            <button id="punchBtn" class="notion-btn">Throw a Punch</button>
+            <span class="miss-text"><strong class="miss-count">0</strong> misses</span>
           </div>
         </div>
 
-        <div class="sidebar-block">
-          <div class="sidebar-title">Perception</div>
-          <div class="sidebar-stat">
-            <span>Legend Status</span>
-            <strong>95%</strong>
+      </section>
+
+      <!-- Right Column: Notes & Audio -->
+      <aside class="right-col">
+
+        <!-- Music / Playlist Widget -->
+        <div class="notion-card side-card">
+          <div class="card-heading">
+            <span class="icon">⏸</span>
+            <h2>PLAYLIST</h2>
           </div>
-          <div class="sidebar-stat">
-            <span>Actual Skill</span>
-            <strong>60%</strong>
+          <p class="side-desc">Background Track</p>
+          <button id="musicToggle" class="notion-btn full">Play BGM</button>
+          <audio id="bgm" loop src="bgm.mp3"></audio>
+        </div>
+
+        <!-- Quick Notes / Personality -->
+        <div class="notion-card side-card">
+          <div class="card-heading">
+            <span class="icon">📝</span>
+            <h2>QUICK NOTES</h2>
           </div>
-          <div class="sidebar-stat">
-            <span>Self Awareness</span>
-            <strong>5%</strong>
-          </div>
+          <ul class="notes-list">
+            <li>Fails almost every written exam because he writes his answers on the wrong line.</li>
+            <li>Constantly looking for food in Kazemachi that tastes like home.</li>
+            <li>Has never been hit in a brawl, mostly by complete accident.</li>
+          </ul>
         </div>
 
       </aside>
 
     </div>
-  </div>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
