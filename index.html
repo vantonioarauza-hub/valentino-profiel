@@ -7,40 +7,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
-  <!-- Header Banner -->
+  <!-- Top Banner -->
   <div class="banner-wrapper">
     <img src="bgimage.png" alt="Header Banner" class="banner-img" onerror="this.src='polaroid1.jpg'">
   </div>
 
   <main class="notion-container">
 
-    <!-- Page Title Header -->
+    <!-- Header Section -->
     <header class="doc-header">
       <div class="avatar-anchor">
         <img src="valentino.png" alt="Valentino" id="portraitImg">
         <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
       </div>
 
-      <h1 class="character-title">Valentino De La Cruz</h1>
-      <p class="subtitle">16 • Panamá ➔ Kazemachi, Japan</p>
+      <div class="header-text-block">
+        <h1 class="character-title">Valentino De La Cruz</h1>
+        <p class="subtitle">16 • Panamá ➔ Kazemachi, Japan</p>
 
-      <blockquote class="quote-callout">
-        "Oye, <em>sumimasen</em>! I'm not looking for a fight bro, I'm just trying to figure out where everyone gets those rice balls!"
-      </blockquote>
+        <blockquote class="quote-callout">
+          "Oye, <em>sumimasen</em>! I'm not looking for a fight bro, I'm just trying to figure out where everyone gets those rice balls!"
+        </blockquote>
+      </div>
     </header>
 
-    <!-- Content Grid Layout -->
+    <!-- Balanced Equal-Width Grid -->
     <div class="content-grid">
 
-      <!-- Left Column: Core Lore & Media -->
-      <section class="left-col">
+      <!-- Left Column: Primary Character Info -->
+      <section class="grid-col">
 
-        <!-- Character Overview -->
+        <!-- Character Profile -->
         <div class="notion-card">
           <div class="card-heading">
             <span class="icon">➔</span>
@@ -48,67 +50,31 @@
           </div>
           <ul class="bio-list">
             <li><strong>Full Name:</strong> Valentino De La Cruz</li>
-            <li><strong>Age:</strong> 16 (Entering 1st Year High School soon)</li>
+            <li><strong>Age:</strong> 16 (Entering 1st Year High School)</li>
             <li><strong>Background:</strong> Afro-Panamanian father & Japanese mother. Moved back to his mother's family home in Kazemachi a year ago.</li>
             <li><strong>Appearance:</strong> Naturally striking, unreal athletic build, charming demeanor, effortless style.</li>
             <li><strong>Current Goal:</strong> Make friends, find good food, fit in, and dance.</li>
           </ul>
         </div>
 
-        <!-- Combat & Evasion Lore -->
+        <!-- The Untouchable Rumor & Dodge Game -->
         <div class="notion-card">
           <div class="card-heading">
             <span class="icon">💨</span>
             <h2>THE "UNTOUCHABLE" RUMOR</h2>
           </div>
           <div class="card-text">
-            <p>Valentino has literally <strong>never hit anyone back</strong>. Because he stands out, local brawlers often try to test him. His response? He just sways, ducks, and dodges with zero effort until the other person collapses from sheer exhaustion.</p>
-            <p class="subtext">He doesn't want trouble—he hates being treated like an exotic outsider or an intimidating threat. He just wants to be included.</p>
+            <p>Valentino has <strong>never hit anyone back</strong>. Because he stands out, local brawlers often test him. He just sways, ducks, and dodges with zero effort until they collapse from exhaustion.</p>
+            <p class="subtext">He hates being treated like an outsider or a threat—he just wants to be included.</p>
           </div>
 
-          <!-- Interactive Dodge Feature -->
           <div class="interactive-row">
             <button id="punchBtn" class="notion-btn">Throw a Punch</button>
             <span class="miss-text"><strong class="miss-count">0</strong> total misses</span>
           </div>
         </div>
 
-        <!-- Polaroid Scrapbook Gallery -->
-        <div class="notion-card">
-          <div class="card-heading">
-            <span class="icon">📸</span>
-            <h2>KAZEMACHI SCRAPBOOK</h2>
-          </div>
-          <p class="section-subdesc">Snapshots from his first year in Japan</p>
-          <div class="polaroid-grid">
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid1.jpg" alt="Photo 1" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Coastal seawall spot</span>
-            </div>
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid2.jpg" alt="Photo 2" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Best food stall in town</span>
-            </div>
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid3.jpg" alt="Photo 3" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Messy room / wardrobe</span>
-            </div>
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid4.jpg" alt="Photo 4" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Broken headphones</span>
-            </div>
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid5.jpg" alt="Photo 5" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Street fashion pickup</span>
-            </div>
-            <div class="polaroid-item">
-              <div class="polaroid-img-box"><img src="polaroid6.jpg" alt="Photo 6" onerror="this.src='valentino.png'"></div>
-              <span class="polaroid-caption">Late night walks</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kazemachi Map Spots -->
+        <!-- Favorite Spots in Kazemachi -->
         <div class="notion-card">
           <div class="card-heading">
             <span class="icon">📍</span>
@@ -117,35 +83,35 @@
           <div class="map-pins-list">
             <div class="map-pin-item">
               <span class="pin-title">01. The Seawall Steps</span>
-              <p>Where he goes to practice dance moves and listen to music at sunset.</p>
+              <p>Where he practices dance moves and listens to music at sunset.</p>
             </div>
             <div class="map-pin-item">
               <span class="pin-title">02. Grandma's Kitchen</span>
-              <p>His family home where his mother and grandmother cook a mix of Panamanian rice and Japanese soup.</p>
+              <p>His family home where his mom and grandma cook a mix of Panamanian & Japanese food.</p>
             </div>
             <div class="map-pin-item">
               <span class="pin-title">03. The Corner Conbini</span>
-              <p>He hangs out here trying every single snack on the shelves.</p>
+              <p>Hangs out here testing every single snack on the shelves.</p>
             </div>
           </div>
         </div>
 
       </section>
 
-      <!-- Right Column: Interactive Sidebar -->
-      <aside class="right-col">
+      <!-- Right Column: Media, Photos & Interactive Widgets -->
+      <section class="grid-col">
 
-        <!-- Multi-Track Audio Player -->
-        <div class="notion-card side-card">
+        <!-- Real Multi-Track Audio Player -->
+        <div class="notion-card">
           <div class="card-heading">
             <span class="icon">🎧</span>
-            <h2>PLAYLIST</h2>
+            <h2>VALENTINO'S PLAYLIST</h2>
           </div>
           
           <div class="player-widget">
             <div class="now-playing-info">
               <span class="track-label">NOW PLAYING</span>
-              <div id="trackTitle" class="track-title">01. Coastal Vibe (Lofi)</div>
+              <div id="trackTitle" class="track-title">01. Bad Bunny – Tití Me Preguntó</div>
             </div>
             
             <div class="player-controls">
@@ -158,38 +124,58 @@
         </div>
 
         <!-- Interactive Messenger Bag -->
-        <div class="notion-card side-card">
+        <div class="notion-card">
           <div class="card-heading">
             <span class="icon">🎒</span>
             <h2>MESSENGER BAG</h2>
           </div>
-          <p class="side-desc">Click an item to inspect:</p>
+          <p class="section-subdesc">Click an item to inspect:</p>
           <ul class="interactive-bag-list">
-            <li class="bag-item" data-desc="Wired MP3 Player with only the left earbud working. Full of Latin hits and Japanese indie tracks.">1x Beat-up MP3 Player</li>
+            <li class="bag-item" data-desc="Wired MP3 Player with only the left earbud working. Currently blasting Sech and Bad Bunny.">1x Beat-up MP3 Player</li>
             <li class="bag-item" data-desc="Handwritten notes translating Spanish slang into broken Japanese Kanji.">1x Language Notebook</li>
             <li class="bag-item" data-desc="A snack bag of Plantain chips brought straight from home. Half full.">1x Plantain Chips</li>
-            <li class="bag-item" data-desc="A lucky coin given to him by his dad before moving to Japan.">1x Panama Coin</li>
+            <li class="bag-item" data-desc="A lucky Panama coin given to him by his dad before moving to Japan.">1x Panama Coin</li>
           </ul>
           <div id="bagInspector" class="bag-inspector-box">
             Select an item above...
           </div>
         </div>
 
-        <!-- Quirks & Likes -->
-        <div class="notion-card side-card">
+        <!-- Polaroid Scrapbook Gallery -->
+        <div class="notion-card">
           <div class="card-heading">
-            <span class="icon">✨</span>
-            <h2>WHAT HE LOVES</h2>
+            <span class="icon">📸</span>
+            <h2>KAZEMACHI SCRAPBOOK</h2>
           </div>
-          <ul class="notes-list">
-            <li>Good food & huge meals</li>
-            <li>Street fashion & dancing</li>
-            <li>Making people laugh</li>
-            <li>Warm coastal weather</li>
-          </ul>
+          <div class="polaroid-grid">
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid1.jpg" alt="Photo 1" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Coastal Seawall</span>
+            </div>
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid2.jpg" alt="Photo 2" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Food Stall</span>
+            </div>
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid3.jpg" alt="Photo 3" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Messy Wardrobe</span>
+            </div>
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid4.jpg" alt="Photo 4" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Headphones</span>
+            </div>
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid5.jpg" alt="Photo 5" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Street Fashion</span>
+            </div>
+            <div class="polaroid-item">
+              <div class="polaroid-img-box"><img src="polaroid6.jpg" alt="Photo 6" onerror="this.src='valentino.png'"></div>
+              <span class="polaroid-caption">Night Walks</span>
+            </div>
+          </div>
         </div>
 
-      </aside>
+      </section>
 
     </div>
 
