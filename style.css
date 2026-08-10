@@ -1,5 +1,5 @@
-/* ================================================================
-   VALENTINO DE LA CRUZ - 3-COLUMN ULTRA-RESPONSIVE DASHBOARD
+ /* ================================================================
+   VALENTINO DE LA CRUZ - DETAILED 3-COLUMN PROFILE
    ================================================================ */
 
 * {
@@ -114,7 +114,7 @@ body {
   color: #37352f;
 }
 
-/* Ultra-Smooth 3-Column Layout */
+/* 3-Column Layout */
 .content-grid-3col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -128,7 +128,7 @@ body {
   gap: 18px;
 }
 
-/* Cards & Micro-Interactions */
+/* Cards */
 .notion-card {
   background: #f7f6f3;
   border-radius: 8px;
@@ -195,6 +195,41 @@ body {
   font-size: 12px;
 }
 
+/* Likes / Dislikes Grid */
+.likes-dislikes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ld-box {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e0ded9;
+}
+
+.ld-title {
+  font-size: 10px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ld-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ld-box li {
+  font-size: 11.5px;
+  color: #37352f;
+}
+
 /* Map Pins */
 .map-pins-list {
   display: flex;
@@ -207,11 +242,6 @@ body {
   padding: 10px 12px;
   border-radius: 6px;
   border-left: 3px solid #1a1a1a;
-  transition: background 0.15s ease;
-}
-
-.map-pin-item:hover {
-  background: #f0eee9;
 }
 
 .pin-title {
@@ -282,7 +312,7 @@ body {
   opacity: 0.9;
 }
 
-/* Interactive Bag List */
+/* Messenger Bag List */
 .interactive-bag-list {
   list-style: none;
   display: flex;
@@ -403,4 +433,5 @@ body {
   .doc-header { flex-direction: column; align-items: flex-start; }
   .content-grid-3col { grid-template-columns: 1fr; }
   .polaroid-grid { grid-template-columns: repeat(3, 1fr); }
+  .likes-dislikes-grid { grid-template-columns: 1fr; }
 }
