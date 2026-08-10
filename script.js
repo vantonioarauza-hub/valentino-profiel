@@ -2,12 +2,16 @@
 let missCount = 0;
 let currentTrackIndex = 0;
 
-// Tracklist with 2008 & Modern Sech/Bad Bunny Tracks
+// Tracklist with Real Songs & Shaggy Added
 const playlist = [
   { title: "01. Bad Bunny – Tití Me Preguntó", src: "track1.mp3" },
   { title: "02. Sech – Otro Trago", src: "track2.mp3" },
-  { title: "03. Snoop Dogg – Lodi Dodi (1993)", src: "track3.mp3" }
+  { title: "03. Snoop Dogg – Lodi Dodi (1993)", src: "track3.mp3" },
+  { title: "04. Shaggy – Angel (2000)", src: "track4.mp3" }
 ];
+
+// Voice Claim recommendation Note: 
+// A great voice match for Valentino is an easygoing, naturally deep, laid-back English/Spanish dub tone like Mugen (Samurai Champloo) or Rensuke Kunigami (Blue Lock).
 
 // DOM Elements
 const audioPlayer = document.getElementById('audioPlayer');
