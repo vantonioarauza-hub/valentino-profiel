@@ -1,148 +1,389 @@
-// Game State
-const GameState = {
-  missCount: 0,
-  balanceLevel: 65,
-  maxMisses: 30
-};
+/* ================================================================
+   VALENTINO DE LA CRUZ - CLEAN STEAM PROFILE THEME
+   Monochrome / Clean / Glassmorphic / Background Image
+   ================================================================ */
 
-// DOM Elements
-const elements = {
-  musicBtn: document.getElementById('musicToggle'),
-  audio: document.getElementById('bgm'),
-  punchBtn: document.getElementById('punchBtn'),
-  portraitImg: document.getElementById('portraitImg'),
-  missCount: document.querySelector('.miss-count'),
-  balanceMeter: document.getElementById('balanceMeter'),
-  dodgeIndicator: document.getElementById('dodgeIndicator'),
-  controlText: document.querySelector('.control-text')
-};
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-  initializeAudio();
-  initializePunchMechanics();
-});
+body {
+  background-color: #0d0f12;
+  background-image: url('bgimage.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 15px;
+}
 
-// Audio Logic
-function initializeAudio() {
-  if (elements.musicBtn) {
-    elements.musicBtn.addEventListener('click', toggleMusic);
+/* Semi-transparent dark overlay for readability */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+/* Main Container Frame */
+.steam-container {
+  width: 100%;
+  max-width: 960px;
+  background: rgba(18, 22, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header Section */
+.profile-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.avatar-box {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #fff;
+  overflow: hidden;
+}
+
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dodge-popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 4px 8px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.header-details {
+  flex-grow: 1;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.username {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.location {
+  font-size: 12px;
+  color: #a0a0a0;
+}
+
+.custom-quote {
+  font-size: 13px;
+  color: #cccccc;
+  font-style: italic;
+  margin-bottom: 14px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.steam-badges-row {
+  display: flex;
+  gap: 6px;
+}
+
+.badge-pill {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 2px;
+}
+
+.badge-pill.alt {
+  background: transparent;
+  color: #a0a0a0;
+}
+
+/* Header Right Widget */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.level-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.level-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+}
+
+.level-num {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.steam-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.steam-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+}
+
+/* Profile Body Grid */
+.profile-body {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 20px;
+}
+
+/* Showcase Cards */
+.showcase-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.showcase-header {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.showcase-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #a0a0a0;
+}
+
+.showcase-content {
+  padding: 16px;
+}
+
+.showcase-quote h3 {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.showcase-quote p {
+  color: #b0b0b0;
+  font-size: 12px;
+}
+
+/* Interactive Evasion Button */
+.combat-box {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.steam-action-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.steam-action-btn:hover {
+  background: #e0e0e0;
+}
+
+.steam-action-btn:active {
+  transform: scale(0.97);
+}
+
+.miss-counter {
+  display: flex;
+  flex-direction: column;
+}
+
+.miss-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.miss-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #707070;
+}
+
+/* Attributes Grid */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
+
+.attr-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 12px;
+  border-radius: 2px;
+}
+
+.attr-label {
+  display: block;
+  font-size: 10px;
+  color: #707070;
+  text-transform: uppercase;
+}
+
+.attr-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.attr-sub {
+  display: block;
+  font-size: 11px;
+  color: #a0a0a0;
+}
+
+/* Sidebar Styling */
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-block {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 2px;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.sidebar-sub {
+  font-size: 11px;
+  color: #707070;
+}
+
+.badge-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.icon-slot {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.sidebar-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #a0a0a0;
+  margin-top: 6px;
+}
+
+.sidebar-stat strong {
+  color: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+  }
+  .header-right {
+    align-items: flex-start;
+  }
+  .profile-body {
+    grid-template-columns: 1fr;
   }
 }
-
-function toggleMusic() {
-  if (elements.audio.paused) {
-    elements.audio.play();
-    elements.controlText.textContent = 'Pause';
-    elements.musicBtn.style.background = 'linear-gradient(135deg, #d4835c, #e8956e)';
-    elements.musicBtn.style.color = '#0a0e17';
-  } else {
-    elements.audio.pause();
-    elements.controlText.textContent = 'Play';
-    elements.musicBtn.style.background = 'rgba(20, 25, 40, 0.8)';
-    elements.musicBtn.style.color = '#d4835c';
-  }
-}
-
-// Punch & Dodge Logic
-function initializePunchMechanics() {
-  if (elements.punchBtn) {
-    elements.punchBtn.addEventListener('click', handlePunch);
-  }
-}
-
-const dodgeMessages = [
-  'LAS CINTAS!',
-  'TOO SLOW!',
-  'QUÉ SOPA?',
-  'OYE BRO!',
-  'MISSED!',
-  'RHYTHM FLOW!',
-  'TRANQUILO!'
-];
-
-function handlePunch() {
-  if (elements.punchBtn.disabled) return;
-
-  GameState.missCount++;
-  updateMissCounter();
-  updateBalanceMeter();
-
-  elements.punchBtn.disabled = true;
-  performDodge();
-
-  setTimeout(() => {
-    elements.punchBtn.disabled = false;
-  }, 300);
-}
-
-function performDodge() {
-  const xShift = (Math.random() - 0.5) * 90;
-  const yShift = (Math.random() - 0.5) * 40;
-  const rotation = xShift / 18;
-
-  const message = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
-
-  gsap.timeline()
-    .to(elements.portraitImg, {
-      x: xShift,
-      y: yShift,
-      rotation: rotation,
-      duration: 0.12,
-      ease: 'power2.out'
-    }, 0)
-    .to(elements.dodgeIndicator, {
-      textContent: message,
-      opacity: 1,
-      y: -30,
-      scale: 1.1,
-      duration: 0.18,
-      ease: 'back.out'
-    }, 0)
-    .to(elements.portraitImg, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      duration: 0.45,
-      ease: 'elastic.out(1.2, 0.6)'
-    }, 0.15)
-    .to(elements.dodgeIndicator, {
-      opacity: 0,
-      y: -50,
-      duration: 0.25
-    }, 0.35);
-}
-
-function updateMissCounter() {
-  if (elements.missCount) {
-    gsap.to(elements.missCount, {
-      textContent: GameState.missCount,
-      duration: 0.3,
-      ease: 'power2.out',
-      snap: { textContent: 1 }
-    });
-  }
-}
-
-function updateBalanceMeter() {
-  if (elements.balanceMeter) {
-    const newBalance = Math.min(65 + (GameState.missCount / GameState.maxMisses) * 30, 95);
-    GameState.balanceLevel = newBalance;
-
-    gsap.to(elements.balanceMeter, {
-      width: newBalance + '%',
-      duration: 0.4,
-      ease: 'power2.out'
-    });
-  }
-}
-
-// Spacebar shortcut
-document.addEventListener('keydown', (e) => {
-  if (e.code === 'Space') {
-    e.preventDefault();
-    if (elements.punchBtn && !elements.punchBtn.disabled) {
-      elements.punchBtn.click();
-    }
-  }
-});
