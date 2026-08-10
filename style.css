@@ -1,175 +1,430 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentino De La Cruz | Steam Profile</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
+/* ================================================================
+   VALENTINO DE LA CRUZ - SOFT GLASS STEAM PROFILE THEME
+   ================================================================ */
 
-  <div class="bg-overlay"></div>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Main Profile Container -->
-  <div class="steam-container">
+body {
+  background-color: #d1d5db;
+  background-image: url('bgimage.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: #2b2d42;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 50px 15px;
+}
 
-    <!-- Profile Header -->
-    <header class="profile-header">
-      <div class="avatar-frame-wrapper">
-        <div class="avatar-box">
-          <img src="valentino.png" alt="Valentino De La Cruz" id="portraitImg">
-          <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
-        </div>
-      </div>
+/* Subtle Vignette Overlay */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(180, 185, 195, 0.45) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
 
-      <div class="header-details">
-        <div class="user-row">
-          <h1 class="username">Valentino</h1>
-          <span class="flag">🇵🇦</span>
-          <span class="location">Panamá ➔ Kazemachi</span>
-        </div>
-        
-        <div class="custom-quote">
-          "Oye bro, <em>sumimasen</em>, but I don't understand <em>nada</em> of this test. <em>Arigatou</em> though!"
-        </div>
+/* Main Container: Light Frosted Glass Window */
+.steam-container {
+  width: 100%;
+  max-width: 920px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(255, 255, 255, 0.5) inset;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
 
-        <div class="steam-badges-row">
-          <span class="badge-pill">UNTOUCHABLE</span>
-          <span class="badge-pill">LAS CINTAS</span>
-          <span class="badge-pill alt">JAPASPANISH</span>
-        </div>
-      </div>
+/* Profile Header */
+.profile-header {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
 
-      <!-- Level & Audio Control -->
-      <div class="header-right">
-        <div class="level-box">
-          <span class="level-title">Level</span>
-          <span class="level-num">100</span>
-        </div>
+.avatar-frame-wrapper {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(200,205,215,0.5));
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
 
-        <button id="musicToggle" class="steam-btn">
-          <span class="btn-icon">♪</span>
-          <span class="control-text">Play BGM</span>
-        </button>
-        <audio id="bgm" loop src="bgm.mp3"></audio>
-      </div>
-    </header>
+.avatar-box {
+  width: 124px;
+  height: 124px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: #ffffff;
+  overflow: hidden;
+}
 
-    <!-- Main Content Layout -->
-    <div class="profile-body">
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-      <!-- Left Column: Primary Showcase -->
-      <main class="main-column">
+.dodge-popup {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2b2d42;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+}
 
-        <!-- Featured Artwork Showcase -->
-        <section class="showcase-card">
-          <div class="showcase-header">
-            <span class="showcase-title">ARTWORK SHOWCASE</span>
-          </div>
+.header-details {
+  flex-grow: 1;
+}
 
-          <!-- Main Image / GIF Showcase Area -->
-          <div class="artwork-container">
-            <div class="artwork-main">
-              <img src="valentino.png" alt="Valentino Artwork" class="artwork-img">
-            </div>
-          </div>
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
 
-          <div class="showcase-content">
-            <div class="showcase-quote">
-              <h3>"The Untouchable"</h3>
-              <p>Operates on 100% instinct and coastal rhythm. Nobody in Kazemachi can read his movement or land a single hit.</p>
-            </div>
+.username {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e2029;
+  letter-spacing: -0.5px;
+}
 
-            <!-- Evasion Test Mechanic -->
-            <div class="combat-box">
-              <button id="punchBtn" class="steam-action-btn">
-                <span>Throw a Punch</span>
-              </button>
-              <div class="miss-counter">
-                <span class="miss-count">0</span>
-                <span class="miss-label">TOTAL MISSES</span>
-              </div>
-            </div>
-          </div>
-        </section>
+.location {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 500;
+}
 
-        <!-- Attributes Grid -->
-        <section class="showcase-card">
-          <div class="showcase-header">
-            <span class="showcase-title">CHARACTER ATTRIBUTES</span>
-          </div>
+.custom-quote {
+  font-size: 13px;
+  color: #4a4e69;
+  font-style: italic;
+  margin-bottom: 14px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(43, 45, 66, 0.25);
+}
 
-          <div class="attributes-grid">
-            <div class="attr-item">
-              <span class="attr-label">Fighting Style</span>
-              <span class="attr-value">Las Cintas</span>
-              <span class="attr-sub">Fluid • Evasive</span>
-            </div>
+.steam-badges-row {
+  display: flex;
+  gap: 6px;
+}
 
-            <div class="attr-item">
-              <span class="attr-label">Evasion Stat</span>
-              <span class="attr-value">100 / 10</span>
-              <span class="attr-sub">Untouchable</span>
-            </div>
+.badge-pill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #2b2d42;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
 
-            <div class="attr-item">
-              <span class="attr-label">Academics</span>
-              <span class="attr-value">F Grade</span>
-              <span class="attr-sub">Writes name wrong</span>
-            </div>
+.badge-pill.alt {
+  background: rgba(255, 255, 255, 0.4);
+  color: #6c757d;
+}
 
-            <div class="attr-item">
-              <span class="attr-label">Language</span>
-              <span class="attr-value">Japaspanish</span>
-              <span class="attr-sub">100% Confidence</span>
-            </div>
-          </div>
-        </section>
+/* Header Right Widget */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
 
-      </main>
+.level-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
 
-      <!-- Right Column: Sidebar -->
-      <aside class="sidebar-column">
+.level-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8d99ae;
+  text-transform: uppercase;
+}
 
-        <div class="sidebar-block">
-          <div class="sidebar-title">Currently Offline</div>
-          <div class="sidebar-sub">Last Online 2 hrs ago</div>
-        </div>
+.level-num {
+  font-weight: 800;
+  color: #2b2d42;
+}
 
-        <div class="sidebar-block">
-          <div class="sidebar-title">Badges</div>
-          <div class="badge-icons">
-            <div class="icon-slot">🇵🇦</div>
-            <div class="icon-slot">⚡</div>
-            <div class="icon-slot">💨</div>
-          </div>
-        </div>
+.steam-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #2b2d42;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
 
-        <div class="sidebar-block">
-          <div class="sidebar-title">Perception</div>
-          <div class="sidebar-stat">
-            <span>Legend Status</span>
-            <strong>95%</strong>
-          </div>
-          <div class="sidebar-stat">
-            <span>Actual Skill</span>
-            <strong>60%</strong>
-          </div>
-          <div class="sidebar-stat">
-            <span>Self Awareness</span>
-            <strong>5%</strong>
-          </div>
-        </div>
+.steam-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
 
-      </aside>
+/* Profile Body Grid */
+.profile-body {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 20px;
+}
 
-    </div>
-  </div>
+/* Showcase Cards */
+.showcase-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.showcase-header {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #8d99ae;
+}
+
+/* Artwork Frame */
+.artwork-container {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.artwork-main {
+  width: 100%;
+  max-height: 380px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.artwork-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showcase-content {
+  padding: 16px;
+}
+
+.showcase-quote h3 {
+  font-size: 15px;
+  color: #1e2029;
+  margin-bottom: 4px;
+}
+
+.showcase-quote p {
+  color: #4a4e69;
+  font-size: 12px;
+}
+
+/* Combat Interactive Bar */
+.combat-box {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.steam-action-btn {
+  background: #2b2d42;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(43, 45, 66, 0.2);
+  transition: all 0.2s ease;
+}
+
+.steam-action-btn:hover {
+  background: #3d405b;
+  transform: translateY(-1px);
+}
+
+.steam-action-btn:active {
+  transform: scale(0.97);
+}
+
+.miss-counter {
+  display: flex;
+  flex-direction: column;
+}
+
+.miss-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b2d42;
+}
+
+.miss-label {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  color: #8d99ae;
+}
+
+/* Attributes Grid */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 14px;
+}
+
+.attr-item {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  padding: 10px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.attr-label {
+  display: block;
+  font-size: 10px;
+  color: #8d99ae;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.attr-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e2029;
+}
+
+.attr-sub {
+  display: block;
+  font-size: 11px;
+  color: #6c757d;
+}
+
+/* Sidebar Styling */
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar-block {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2b2d42;
+}
+
+.sidebar-sub {
+  font-size: 11px;
+  color: #8d99ae;
+}
+
+.badge-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.icon-slot {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.sidebar-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #6c757d;
+  margin-top: 6px;
+}
+
+.sidebar-stat strong {
+  color: #1e2029;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+  }
+  .header-right {
+    align-items: flex-start;
+  }
+  .profile-body {
+    grid-template-columns: 1fr;
+  }
+}
