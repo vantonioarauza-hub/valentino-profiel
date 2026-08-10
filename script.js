@@ -2,11 +2,11 @@
 let missCount = 0;
 let currentTrackIndex = 0;
 
-// Tracklist with Real Songs
+// Tracklist with 2008 & Modern Sech/Bad Bunny Tracks
 const playlist = [
   { title: "01. Bad Bunny – Tití Me Preguntó", src: "track1.mp3" },
   { title: "02. Sech – Otro Trago", src: "track2.mp3" },
-  { title: "03. Sech – Romance", src: "track3.mp3" }
+  { title: "03. Snoop Dogg – Lodi Dodi (1993)", src: "track3.mp3" }
 ];
 
 // DOM Elements
@@ -62,12 +62,16 @@ if (bagItems && bagInspector) {
   bagItems.forEach(item => {
     item.addEventListener('click', () => {
       const description = item.getAttribute('data-desc');
-      bagInspector.textContent = description;
+      
+      gsap.to(bagInspector, { opacity: 0, y: -4, duration: 0.1, onComplete: () => {
+        bagInspector.textContent = description;
+        gsap.to(bagInspector, { opacity: 1, y: 0, duration: 0.15 });
+      }});
     });
   });
 }
 
-// Dodge Mechanic
+// Evasion Mechanic
 const dodgeMessages = ['DODGED!', 'TOO SLOW!', 'QUÉ SOPA?', 'MISSED!', 'TRANQUILO!'];
 
 if (punchBtn && portraitImg) {
@@ -79,7 +83,7 @@ if (punchBtn && portraitImg) {
 
     punchBtn.disabled = true;
 
-    const xShift = (Math.random() - 0.5) * 40;
+    const xShift = (Math.random() - 0.5) * 45;
     const yShift = (Math.random() - 0.5) * 20;
     const message = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 
