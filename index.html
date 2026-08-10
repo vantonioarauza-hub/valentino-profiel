@@ -12,17 +12,18 @@
 </head>
 <body>
 
-  <!-- Full Background Image Layer -->
   <div class="bg-overlay"></div>
 
-  <!-- Main Steam Profile Container -->
+  <!-- Main Profile Container -->
   <div class="steam-container">
 
-    <!-- Top Profile Header Block -->
+    <!-- Profile Header -->
     <header class="profile-header">
-      <div class="avatar-box">
-        <img src="valentino.png" alt="Valentino De La Cruz" id="portraitImg">
-        <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
+      <div class="avatar-frame-wrapper">
+        <div class="avatar-box">
+          <img src="valentino.png" alt="Valentino De La Cruz" id="portraitImg">
+          <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
+        </div>
       </div>
 
       <div class="header-details">
@@ -43,7 +44,7 @@
         </div>
       </div>
 
-      <!-- Right Side Level & Audio Widget -->
+      <!-- Level & Audio Control -->
       <div class="header-right">
         <div class="level-box">
           <span class="level-title">Level</span>
@@ -51,23 +52,30 @@
         </div>
 
         <button id="musicToggle" class="steam-btn">
-          <span class="btn-icon">▶</span>
+          <span class="btn-icon">♪</span>
           <span class="control-text">Play BGM</span>
         </button>
         <audio id="bgm" loop src="bgm.mp3"></audio>
       </div>
     </header>
 
-    <!-- Main Content Grid -->
+    <!-- Main Content Layout -->
     <div class="profile-body">
 
-      <!-- Left Column: Primary Showcase / Stats -->
+      <!-- Left Column: Primary Showcase -->
       <main class="main-column">
 
-        <!-- Artwork / Profile Showcase Box -->
+        <!-- Featured Artwork Showcase -->
         <section class="showcase-card">
           <div class="showcase-header">
-            <span class="showcase-title">CUSTOM SHOWCASE</span>
+            <span class="showcase-title">ARTWORK SHOWCASE</span>
+          </div>
+
+          <!-- Main Image / GIF Showcase Area -->
+          <div class="artwork-container">
+            <div class="artwork-main">
+              <img src="valentino.png" alt="Valentino Artwork" class="artwork-img">
+            </div>
           </div>
 
           <div class="showcase-content">
@@ -76,7 +84,7 @@
               <p>Operates on 100% instinct and coastal rhythm. Nobody in Kazemachi can read his movement or land a single hit.</p>
             </div>
 
-            <!-- Evasion Test Interaction -->
+            <!-- Evasion Test Mechanic -->
             <div class="combat-box">
               <button id="punchBtn" class="steam-action-btn">
                 <span>Throw a Punch</span>
@@ -89,7 +97,7 @@
           </div>
         </section>
 
-        <!-- Stats / Attributes Showcase -->
+        <!-- Attributes Grid -->
         <section class="showcase-card">
           <div class="showcase-header">
             <span class="showcase-title">CHARACTER ATTRIBUTES</span>
@@ -124,7 +132,7 @@
 
       </main>
 
-      <!-- Right Column: Steam Sidebar -->
+      <!-- Right Column: Sidebar -->
       <aside class="sidebar-column">
 
         <div class="sidebar-block">
