@@ -3,201 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentino De La Cruz | Kazemachi's Untouchable</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Valentino De La Cruz | Kazemachi Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_new.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-  <!-- Ambient Background Animation -->
-  <div class="ambient-background">
-    <div class="wave wave-1"></div>
-    <div class="wave wave-2"></div>
-    <div class="wave wave-3"></div>
-  </div>
-
-  <!-- Audio Player Widget -->
-  <div class="audio-container">
-    <button id="musicToggle" class="music-btn">
-      <span class="music-icon">♪</span>
-      <span class="music-text">Play Track</span>
-    </button>
-    <audio id="bgm" loop src="bgm.mp3"></audio>
-  </div>
-
-  <!-- Pressure Indicator (Kazemachi Balance) -->
-  <div class="pressure-gauge">
-    <div class="gauge-label">System Balance</div>
-    <div class="gauge-bar">
-      <div class="gauge-fill" id="gaugeIndicator"></div>
-    </div>
-  </div>
-
-  <!-- Main Container -->
-  <main class="container">
-    <!-- Left Section: Image + Visual Stats -->
-    <section class="character-visual">
-      <div class="image-wrapper">
-        <div class="image-frame">
-          <img src="valentino.png" alt="Valentino De La Cruz" id="valentinoImg" class="character-image">
-          <div class="image-aura warm"></div>
-          <div id="dodgeText" class="dodge-popup">DODGED!</div>
-          <div class="combat-indicator">
-            <span class="indicator-dot"></span>
-            <span class="indicator-text">UNTOUCHABLE</span>
+  <div class="page-wrapper">
+    <!-- Fixed Header Controls -->
+    <header class="header">
+      <div class="header-left">
+        <div class="balance-meter">
+          <label class="meter-label">Kazemachi Balance</label>
+          <div class="meter-bar">
+            <div class="meter-fill" id="balanceMeter"></div>
           </div>
         </div>
+      </div>
+      <div class="header-right">
+        <button id="musicToggle" class="control-btn">
+          <span class="control-icon">♪</span>
+          <span class="control-text">Play</span>
+        </button>
+        <audio id="bgm" loop src="bgm.mp3"></audio>
+      </div>
+    </header>
+
+    <!-- Main Profile Container -->
+    <main class="profile-container">
+      <div class="profile-grid">
         
-        <!-- Visual Rhythm Meter (Las Cintas) -->
-        <div class="rhythm-meter">
-          <div class="rhythm-label">Rhythm Flow</div>
-          <div class="rhythm-bars">
-            <div class="rhythm-bar active"></div>
-            <div class="rhythm-bar active"></div>
-            <div class="rhythm-bar active"></div>
-            <div class="rhythm-bar active"></div>
-            <div class="rhythm-bar active"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Threat Assessment Card (Humorous) -->
-      <div class="threat-card">
-        <h4>Local Perception</h4>
-        <div class="threat-item">
-          <span class="threat-label">Legend Status</span>
-          <div class="threat-bar">
-            <div class="threat-fill legend" style="width: 95%"></div>
-          </div>
-          <span class="threat-value">95%</span>
-        </div>
-        <div class="threat-item">
-          <span class="threat-label">Actual Skill</span>
-          <div class="threat-bar">
-            <div class="threat-fill skill" style="width: 60%"></div>
-          </div>
-          <span class="threat-value">60%</span>
-        </div>
-        <div class="threat-item">
-          <span class="threat-label">Self-Awareness</span>
-          <div class="threat-bar">
-            <div class="threat-fill awareness" style="width: 5%"></div>
-          </div>
-          <span class="threat-value">5%</span>
-        </div>
-        <p class="threat-note">*Completely unearned legend status</p>
-      </div>
-    </section>
-
-    <!-- Right Section: Profile Info -->
-    <section class="profile-content">
-      <!-- Status Badges -->
-      <div class="status-badges">
-        <span class="badge origin">🇵🇦 Panamá ➔ Kazemachi</span>
-        <span class="badge unaffiliated">
-          <span class="dot"></span>
-          Unaffiliated Wildcard
-        </span>
-        <span class="badge danger">System Pressure Point</span>
-      </div>
-
-      <!-- Header -->
-      <div class="profile-header">
-        <h1 class="character-name">Valentino<br>De La Cruz</h1>
-        <p class="character-title">"The Untouchable"</p>
-        <p class="character-subtitle">Master of <em>Las Cintas</em> • Accidental Legend</p>
-      </div>
-
-      <!-- Bio Quote (Garbled/Misunderstood) -->
-      <div class="quote-section">
-        <div class="quote-box">
-          <div class="quote-bubbles">
-            <span class="bubble es">Oye bro...</span>
-            <span class="bubble ja">すみません？</span>
-            <span class="bubble en">I don't get it...</span>
-          </div>
-          <p class="quote-text">
-            "Oye bro, <em>sumimasen</em>, but I don't understand <em>nada</em> of this test. <em>Arigatou</em> though!"
-          </p>
-        </div>
-      </div>
-
-      <!-- Interactive Combat Demo -->
-      <div class="combat-demo">
-        <h3 class="demo-label">Try to Hit Him</h3>
-        <div class="punch-area">
-          <button id="attackBtn" class="attack-btn">
-            <span class="btn-text">Throw a Punch</span>
-            <span class="btn-subtext">He'll dodge anyway</span>
-          </button>
-          <div id="misses" class="miss-counter">Misses: 0</div>
-        </div>
-      </div>
-
-      <!-- Core Stats - Visual & Meaningful -->
-      <div class="stats-section">
-        <h3 class="stats-title">Core Profile</h3>
-        <div class="stats-grid">
-          <!-- Fighting Style -->
-          <div class="stat-card fighting">
-            <div class="stat-icon">⚡</div>
-            <div class="stat-content">
-              <h4>Fighting Style</h4>
-              <p class="stat-value">Las Cintas</p>
-              <p class="stat-desc">Fluid • Rhythm-based • Untouchable</p>
+        <!-- Left Column: Portrait & Visual Stats -->
+        <section class="portrait-section">
+          
+          <!-- Character Portrait -->
+          <div class="portrait-card">
+            <div class="portrait-frame">
+              <img src="valentino.png" alt="Valentino De La Cruz - The Untouchable" id="portraitImg" class="portrait-image">
+              <div class="portrait-overlay"></div>
+              <div class="status-badge">
+                <span class="status-dot"></span>
+                <span class="status-text">UNTOUCHABLE</span>
+              </div>
+              <div id="dodgeIndicator" class="dodge-indicator"></div>
+            </div>
+            <div class="portrait-meta">
+              <h2 class="portrait-title">Valentino De La Cruz</h2>
+              <p class="portrait-subtitle">"The Untouchable"</p>
+              <p class="portrait-tagline">Master of <span class="highlight-warm">Las Cintas</span></p>
             </div>
           </div>
 
-          <!-- Evasion -->
-          <div class="stat-card evasion">
-            <div class="stat-icon">💨</div>
-            <div class="stat-content">
-              <h4>Evasion</h4>
-              <p class="stat-value">100/10</p>
-              <p class="stat-desc">Pure instinct & rhythm</p>
+          <!-- Origin & Affiliation Tags -->
+          <div class="info-tags">
+            <div class="info-tag origin-tag">
+              <span class="tag-icon">🇵🇦</span>
+              <span class="tag-text">Panamá → Kazemachi</span>
+            </div>
+            <div class="info-tag affiliation-tag">
+              <span class="tag-dot"></span>
+              <span class="tag-text">Unaffiliated</span>
             </div>
           </div>
 
-          <!-- Academics -->
-          <div class="stat-card academics">
-            <div class="stat-icon">📝</div>
-            <div class="stat-content">
-              <h4>Academics</h4>
-              <p class="stat-value">F</p>
-              <p class="stat-desc">Writes name on wrong line</p>
+          <!-- Rhythm Flow Visualization -->
+          <div class="flow-meter">
+            <label class="flow-label">Rhythm Flow</label>
+            <div class="flow-bars">
+              <div class="flow-bar"></div>
+              <div class="flow-bar"></div>
+              <div class="flow-bar"></div>
+              <div class="flow-bar"></div>
+              <div class="flow-bar"></div>
             </div>
           </div>
 
-          <!-- Languages -->
-          <div class="stat-card languages">
-            <div class="stat-icon">🗣️</div>
-            <div class="stat-content">
-              <h4>Languages</h4>
-              <p class="stat-value">Japaspanish</p>
-              <p class="stat-desc">Confident chaos • 0% coherent</p>
+          <!-- Perception Metrics -->
+          <div class="metrics-card">
+            <h4 class="metrics-title">Local Perception</h4>
+            <div class="metric-row">
+              <span class="metric-label">Legend Status</span>
+              <div class="metric-bar">
+                <div class="metric-fill legend-fill" style="width: 95%"></div>
+              </div>
+              <span class="metric-value">95%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Actual Skill</span>
+              <div class="metric-bar">
+                <div class="metric-fill skill-fill" style="width: 60%"></div>
+              </div>
+              <span class="metric-value">60%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Self-Awareness</span>
+              <div class="metric-bar">
+                <div class="metric-fill awareness-fill" style="width: 5%"></div>
+              </div>
+              <span class="metric-value">5%</span>
+            </div>
+            <p class="metrics-footnote">Completely unearned legend status</p>
+          </div>
+
+        </section>
+
+        <!-- Right Column: Profile Data & Interaction -->
+        <section class="data-section">
+
+          <!-- Character Quote/Voice -->
+          <div class="quote-container">
+            <div class="language-mix">
+              <span class="lang-bubble es">Oye bro</span>
+              <span class="lang-separator">—</span>
+              <span class="lang-bubble ja">すみません</span>
+              <span class="lang-separator">—</span>
+              <span class="lang-bubble en">I don't get it</span>
+            </div>
+            <blockquote class="character-quote">
+              "Oye bro, <span class="foreign">sumimasen</span>, but I don't understand <span class="foreign">nada</span> of this test. <span class="foreign">Arigatou</span> though!"
+            </blockquote>
+          </div>
+
+          <!-- Combat Interaction -->
+          <div class="combat-section">
+            <label class="section-label">Test His Defense</label>
+            <div class="combat-controls">
+              <button id="punchBtn" class="punch-button">
+                <span class="btn-label">Throw a Punch</span>
+                <span class="btn-note">He'll dodge it</span>
+              </button>
+              <div class="miss-display">
+                <span class="miss-count">0</span>
+                <span class="miss-label">Misses</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Character Archetypes -->
-      <div class="archetypes">
-        <h3 class="archetypes-title">Role in Kazemachi</h3>
-        <div class="archetype-tags">
-          <span class="archetype-tag">Instinctive Brawler</span>
-          <span class="archetype-tag">Effortless Dodger</span>
-          <span class="archetype-tag">Bumbling Foreigner</span>
-          <span class="archetype-tag">Chaotic Wildcard</span>
-        </div>
-      </div>
+          <!-- Core Attributes -->
+          <div class="attributes-section">
+            <label class="section-label">Core Attributes</label>
+            <div class="attribute-grid">
+              
+              <div class="attribute-card">
+                <div class="attr-header">
+                  <span class="attr-icon">⚡</span>
+                  <h4 class="attr-name">Fighting Style</h4>
+                </div>
+                <p class="attr-main">Las Cintas</p>
+                <p class="attr-desc">Fluid • Rhythm-based • Untouchable</p>
+              </div>
 
-      <!-- Context: Why He Matters -->
-      <div class="context-box">
-        <h3>⚠️ The Wildcard Effect</h3>
-        <p>Valentino doesn't know he's disrupting Kazemachi's careful balance. His lack of gang affiliation + his untouchable combat skill = a massive variable in a system that depends on predictable hierarchies. If delinquents see him as unbeatable but unaligned, it could tip everything.</p>
-      </div>
-    </section>
-  </main>
+              <div class="attribute-card">
+                <div class="attr-header">
+                  <span class="attr-icon">💨</span>
+                  <h4 class="attr-name">Evasion</h4>
+                </div>
+                <p class="attr-main">100/10</p>
+                <p class="attr-desc">Pure instinct & rhythm</p>
+              </div>
 
-  <script src="script.js"></script>
+              <div class="attribute-card">
+                <div class="attr-header">
+                  <span class="attr-icon">📝</span>
+                  <h4 class="attr-name">Academics</h4>
+                </div>
+                <p class="attr-main">F</p>
+                <p class="attr-desc">Writes name on wrong line</p>
+              </div>
+
+              <div class="attribute-card">
+                <div class="attr-header">
+                  <span class="attr-icon">🗣️</span>
+                  <h4 class="attr-name">Languages</h4>
+                </div>
+                <p class="attr-main">Japaspanish</p>
+                <p class="attr-desc">Confident chaos • 0% coherent</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Role Tags -->
+          <div class="roles-section">
+            <label class="section-label">Role in Kazemachi</label>
+            <div class="role-tags">
+              <span class="role-tag">Instinctive Brawler</span>
+              <span class="role-tag">Effortless Dodger</span>
+              <span class="role-tag">Bumbling Foreigner</span>
+              <span class="role-tag">Chaotic Wildcard</span>
+            </div>
+          </div>
+
+          <!-- Narrative Context -->
+          <div class="context-section">
+            <h4 class="context-title">The Wildcard Effect</h4>
+            <p class="context-text">
+              Valentino doesn't know he's disrupting Kazemachi's careful balance. His lack of gang affiliation combined with his untouchable combat skill creates a massive variable in a system that depends on predictable hierarchies. If delinquents see him as unbeatable but unaligned, it could destabilize everything.
+            </p>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script_new.js"></script>
 </body>
 </html>
