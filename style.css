@@ -1,84 +1,175 @@
-// Game State
-let missCount = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentino De La Cruz | Steam Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
 
-// DOM Elements
-const musicBtn = document.getElementById('musicToggle');
-const audio = document.getElementById('bgm');
-const punchBtn = document.getElementById('punchBtn');
-const portraitImg = document.getElementById('portraitImg');
-const missCountEl = document.querySelector('.miss-count');
-const dodgeIndicator = document.getElementById('dodgeIndicator');
-const controlText = document.querySelector('.control-text');
+  <div class="bg-overlay"></div>
 
-// Audio Toggle Logic
-if (musicBtn && audio) {
-  musicBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      controlText.textContent = 'Pause BGM';
-      musicBtn.style.background = '#2b2d42';
-      musicBtn.style.color = '#ffffff';
-    } else {
-      audio.pause();
-      controlText.textContent = 'Play BGM';
-      musicBtn.style.background = 'rgba(255, 255, 255, 0.85)';
-      musicBtn.style.color = '#2b2d42';
-    }
-  });
-}
+  <!-- Main Profile Container -->
+  <div class="steam-container">
 
-// Interactive Evasion / Las Cintas Mechanic
-const dodgeMessages = [
-  'DODGED!',
-  'TOO SLOW!',
-  'QUÉ SOPA?',
-  'LAS CINTAS!',
-  'MISSED!',
-  'TRANQUILO!'
-];
+    <!-- Profile Header -->
+    <header class="profile-header">
+      <div class="avatar-frame-wrapper">
+        <div class="avatar-box">
+          <img src="valentino.png" alt="Valentino De La Cruz" id="portraitImg">
+          <div id="dodgeIndicator" class="dodge-popup">DODGED!</div>
+        </div>
+      </div>
 
-if (punchBtn && portraitImg) {
-  punchBtn.addEventListener('click', () => {
-    if (punchBtn.disabled) return;
+      <div class="header-details">
+        <div class="user-row">
+          <h1 class="username">Valentino</h1>
+          <span class="flag">🇵🇦</span>
+          <span class="location">Panamá ➔ Kazemachi</span>
+        </div>
+        
+        <div class="custom-quote">
+          "Oye bro, <em>sumimasen</em>, but I don't understand <em>nada</em> of this test. <em>Arigatou</em> though!"
+        </div>
 
-    missCount++;
-    if (missCountEl) {
-      missCountEl.textContent = missCount;
-    }
+        <div class="steam-badges-row">
+          <span class="badge-pill">UNTOUCHABLE</span>
+          <span class="badge-pill">LAS CINTAS</span>
+          <span class="badge-pill alt">JAPASPANISH</span>
+        </div>
+      </div>
 
-    punchBtn.disabled = true;
+      <!-- Level & Audio Control -->
+      <div class="header-right">
+        <div class="level-box">
+          <span class="level-title">Level</span>
+          <span class="level-num">100</span>
+        </div>
 
-    const xShift = (Math.random() - 0.5) * 50;
-    const yShift = (Math.random() - 0.5) * 25;
-    const message = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
+        <button id="musicToggle" class="steam-btn">
+          <span class="btn-icon">♪</span>
+          <span class="control-text">Play BGM</span>
+        </button>
+        <audio id="bgm" loop src="bgm.mp3"></audio>
+      </div>
+    </header>
 
-    gsap.timeline()
-      .to(portraitImg, {
-        x: xShift,
-        y: yShift,
-        duration: 0.1,
-        ease: 'power2.out'
-      }, 0)
-      .to(dodgeIndicator, {
-        textContent: message,
-        opacity: 1,
-        scale: 1,
-        duration: 0.15,
-        ease: 'back.out'
-      }, 0)
-      .to(portraitImg, {
-        x: 0,
-        y: 0,
-        duration: 0.4,
-        ease: 'elastic.out(1, 0.5)'
-      }, 0.12)
-      .to(dodgeIndicator, {
-        opacity: 0,
-        duration: 0.25
-      }, 0.35);
+    <!-- Main Content Layout -->
+    <div class="profile-body">
 
-    setTimeout(() => {
-      punchBtn.disabled = false;
-    }, 250);
-  });
-}
+      <!-- Left Column: Primary Showcase -->
+      <main class="main-column">
+
+        <!-- Featured Artwork Showcase -->
+        <section class="showcase-card">
+          <div class="showcase-header">
+            <span class="showcase-title">ARTWORK SHOWCASE</span>
+          </div>
+
+          <!-- Main Image / GIF Showcase Area -->
+          <div class="artwork-container">
+            <div class="artwork-main">
+              <img src="valentino.png" alt="Valentino Artwork" class="artwork-img">
+            </div>
+          </div>
+
+          <div class="showcase-content">
+            <div class="showcase-quote">
+              <h3>"The Untouchable"</h3>
+              <p>Operates on 100% instinct and coastal rhythm. Nobody in Kazemachi can read his movement or land a single hit.</p>
+            </div>
+
+            <!-- Evasion Test Mechanic -->
+            <div class="combat-box">
+              <button id="punchBtn" class="steam-action-btn">
+                <span>Throw a Punch</span>
+              </button>
+              <div class="miss-counter">
+                <span class="miss-count">0</span>
+                <span class="miss-label">TOTAL MISSES</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Attributes Grid -->
+        <section class="showcase-card">
+          <div class="showcase-header">
+            <span class="showcase-title">CHARACTER ATTRIBUTES</span>
+          </div>
+
+          <div class="attributes-grid">
+            <div class="attr-item">
+              <span class="attr-label">Fighting Style</span>
+              <span class="attr-value">Las Cintas</span>
+              <span class="attr-sub">Fluid • Evasive</span>
+            </div>
+
+            <div class="attr-item">
+              <span class="attr-label">Evasion Stat</span>
+              <span class="attr-value">100 / 10</span>
+              <span class="attr-sub">Untouchable</span>
+            </div>
+
+            <div class="attr-item">
+              <span class="attr-label">Academics</span>
+              <span class="attr-value">F Grade</span>
+              <span class="attr-sub">Writes name wrong</span>
+            </div>
+
+            <div class="attr-item">
+              <span class="attr-label">Language</span>
+              <span class="attr-value">Japaspanish</span>
+              <span class="attr-sub">100% Confidence</span>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Right Column: Sidebar -->
+      <aside class="sidebar-column">
+
+        <div class="sidebar-block">
+          <div class="sidebar-title">Currently Offline</div>
+          <div class="sidebar-sub">Last Online 2 hrs ago</div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-title">Badges</div>
+          <div class="badge-icons">
+            <div class="icon-slot">🇵🇦</div>
+            <div class="icon-slot">⚡</div>
+            <div class="icon-slot">💨</div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-title">Perception</div>
+          <div class="sidebar-stat">
+            <span>Legend Status</span>
+            <strong>95%</strong>
+          </div>
+          <div class="sidebar-stat">
+            <span>Actual Skill</span>
+            <strong>60%</strong>
+          </div>
+          <div class="sidebar-stat">
+            <span>Self Awareness</span>
+            <strong>5%</strong>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
