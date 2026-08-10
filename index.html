@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentino De La Cruz | Kazemachi's Untouchable</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- GSAP for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Audio Player Widget -->
+  <div class="audio-container">
+    <button id="musicToggle">▶ Play Track</button>
+    <audio id="bgm" loop src="your-bgm-file.mp3"></audio>
+  </div>
+
+  <!-- Main Hero Card -->
+  <main class="profile-card">
+    <div class="image-wrapper">
+      <img src="valentino.jpg" alt="Valentino De La Cruz" id="valentinoImg">
+      <div id="dodgeText" class="dodge-popup">DODGED!</div>
+    </div>
+
+    <div class="profile-info">
+      <span class="origin-tag">Panamá ➔ Kazemachi</span>
+      <h1>Valentino De La Cruz</h1>
+      <p class="subtitle">The Unaffiliated Wildcard</p>
+
+      <!-- Interactive Dodge Button -->
+      <button id="attackBtn">Throw a Punch</button>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Evasion & Flow</h3>
+          <p>100/10 (Untouchable)</p>
+        </div>
+        <div class="stat-card">
+          <h3>Academics</h3>
+          <p>F (Never passed history)</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
