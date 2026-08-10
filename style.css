@@ -1,21 +1,101 @@
+/* ============================================
+   VALENTINO DE LA CRUZ - COMPLETE REDESIGN
+   Warm Coastal Energy vs Cold Kazemachi Tension
+   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  /* Kazemachi Cold */
+  --dark-bg: #0b0d13;
+  --dark-card: #131824;
+  --dark-border: #232d42;
+  --dark-text: #8a99ad;
+  
+  /* Valentino Warm */
+  --warm-primary: #e8956e;    /* Burnt Orange - warm coastal vibe */
+  --warm-accent: #f5a962;     /* Golden Peach */
+  --warm-highlight: #ffb347;  /* Cantaloupe */
+  --warm-glow: #ff9a4d;       /* Sunset Orange */
+  
+  /* Accent Colors */
+  --cyan: #00f2fe;
+  --magenta: #ff0055;
+  --legend: #ffd700;
+  --skill: #00ff88;
+  --aware: #ff4444;
+  
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #8a99ad;
 }
 
 body {
-  background: #0b0d13;
-  color: #fff;
+  background: linear-gradient(135deg, #0b0d13 0%, #0f1219 100%);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Floating Music Button */
+/* ============================================
+   AMBIENT BACKGROUND - Coastal Wave Vibes
+   ============================================ */
+
+.ambient-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, var(--warm-primary) 0%, transparent 70%);
+  border-radius: 45%;
+}
+
+.wave-1 {
+  top: -50%;
+  left: -50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+.wave-2 {
+  top: -30%;
+  right: -30%;
+  animation: float 25s infinite ease-in-out reverse;
+  animation-delay: 5s;
+}
+
+.wave-3 {
+  bottom: -40%;
+  left: 20%;
+  animation: float 30s infinite ease-in-out;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(50px, 50px) rotate(180deg); }
+}
+
+/* ============================================
+   HEADER ELEMENTS
+   ============================================ */
+
 .audio-container {
   position: fixed;
   top: 20px;
@@ -23,185 +103,830 @@ body {
   z-index: 100;
 }
 
-#musicToggle {
-  background: #182030;
-  color: #00f2fe;
-  border: 1px solid #00f2fe;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
+.music-btn {
+  background: linear-gradient(135deg, var(--dark-card), var(--dark-bg));
+  color: var(--warm-primary);
+  border: 2px solid var(--warm-primary);
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
-}
-
-#musicToggle:hover {
-  background: #00f2fe;
-  color: #0b0d13;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
-}
-
-/* Main Profile Card */
-.profile-card {
-  background: #131824;
-  border-radius: 20px;
-  padding: 30px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
-  gap: 30px;
-  max-width: 850px;
-  width: 90%;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-  border: 1px solid #232d42;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 15px rgba(232, 149, 110, 0.15);
+}
+
+.music-btn:hover {
+  background: var(--warm-primary);
+  color: var(--dark-bg);
+  box-shadow: 0 0 25px rgba(232, 149, 110, 0.4);
+  transform: translateY(-2px);
+}
+
+.music-btn:active {
+  transform: translateY(0);
+}
+
+.music-icon {
+  font-size: 1.1rem;
+  animation: pulse-beat 1s infinite;
+}
+
+@keyframes pulse-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ============================================
+   PRESSURE GAUGE - System Balance Indicator
+   ============================================ */
+
+.pressure-gauge {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(19, 24, 36, 0.8);
+  border: 1px solid var(--dark-border);
+  padding: 12px 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gauge-label {
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.gauge-bar {
+  width: 120px;
+  height: 4px;
+  background: rgba(139, 153, 173, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--dark-border);
+}
+
+.gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--warm-primary), var(--magenta));
+  width: 65%;
+  animation: pulse-gauge 3s ease-in-out infinite;
+}
+
+@keyframes pulse-gauge {
+  0%, 100% { width: 65%; opacity: 0.8; }
+  50% { width: 75%; opacity: 1; }
+}
+
+/* ============================================
+   MAIN CONTAINER - Two-Column Layout
+   ============================================ */
+
+.container {
   position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 40px;
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* ============================================
+   CHARACTER VISUAL SECTION - Left Column
+   ============================================ */
+
+.character-visual {
+  flex: 0 0 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .image-wrapper {
-  position: relative;
-  width: 290px;
-  height: 410px;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.image-wrapper img {
+.image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--dark-border);
+  background: var(--dark-card);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.character-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px;
-  border: 2px solid #232d42;
+  object-position: center;
 }
 
-/* Dodge Popup Animation Text */
+/* Warm Aura Effect - Shows Valentino's Warmth */
+.image-aura {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  animation: aura-pulse 4s ease-in-out infinite;
+}
+
+.image-aura.warm {
+  background: radial-gradient(ellipse at center, rgba(232, 149, 110, 0.3), transparent 70%);
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.25; }
+}
+
+/* Combat Indicator Badge */
+.combat-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(19, 24, 36, 0.9);
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--warm-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--warm-primary);
+  backdrop-filter: blur(10px);
+  animation: float-up 3s ease-in-out infinite;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--warm-primary);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes blink {
+  0%, 49%, 100% { opacity: 1; }
+  50%, 99% { opacity: 0.3; }
+}
+
+/* Dodge Popup Text */
 .dodge-popup {
   position: absolute;
   top: 40%;
   left: 10%;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 900;
-  color: #ff0055;
-  text-shadow: 0 0 12px #ff0055, 0 0 20px #000;
+  color: var(--magenta);
+  text-shadow: 0 0 15px var(--magenta), 0 0 30px rgba(255, 0, 85, 0.5);
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
+  letter-spacing: 2px;
+  z-index: 10;
 }
 
-.profile-info {
+/* ============================================
+   RHYTHM METER - Visual Las Cintas Flow
+   ============================================ */
+
+.rhythm-meter {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rhythm-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.rhythm-bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.rhythm-bar {
+  flex: 1;
+  height: 24px;
+  background: rgba(139, 153, 173, 0.15);
+  border: 1px solid var(--dark-border);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rhythm-bar.active {
+  background: linear-gradient(180deg, var(--warm-primary), var(--warm-accent));
+  border-color: var(--warm-primary);
+  animation: rhythm-pulse 0.6s ease-in-out infinite;
+}
+
+.rhythm-bar.active:nth-child(2) { animation-delay: 0.1s; }
+.rhythm-bar.active:nth-child(3) { animation-delay: 0.2s; }
+.rhythm-bar.active:nth-child(4) { animation-delay: 0.3s; }
+.rhythm-bar.active:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes rhythm-pulse {
+  0%, 100% { transform: scaleY(0.6); opacity: 0.6; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ============================================
+   THREAT CARD - Local Perception Metrics
+   ============================================ */
+
+.threat-card {
+  background: linear-gradient(135deg, rgba(232, 149, 110, 0.05), rgba(19, 24, 36, 0.8));
+  border: 1px solid rgba(232, 149, 110, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.threat-card h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--warm-primary);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.threat-item {
+  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 100px 1fr 40px;
+  align-items: center;
+  gap: 12px;
+}
+
+.threat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.threat-bar {
+  height: 6px;
+  background: rgba(139, 153, 173, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--dark-border);
+}
+
+.threat-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease-out;
+}
+
+.threat-fill.legend {
+  background: linear-gradient(90deg, var(--legend), var(--warm-accent));
+}
+
+.threat-fill.skill {
+  background: linear-gradient(90deg, var(--skill), var(--cyan));
+}
+
+.threat-fill.awareness {
+  background: linear-gradient(90deg, var(--aware), var(--magenta));
+}
+
+.threat-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--warm-primary);
+  text-align: right;
+}
+
+.threat-note {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(232, 149, 110, 0.1);
+}
+
+/* ============================================
+   PROFILE CONTENT SECTION - Right Column
+   ============================================ */
+
+.profile-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Status Badges */
+.status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.badge.origin {
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.badge.unaffiliated {
+  background: rgba(232, 149, 110, 0.1);
+  color: var(--warm-primary);
+  border-color: var(--warm-primary);
+}
+
+.badge.danger {
+  background: rgba(255, 0, 85, 0.1);
+  color: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--warm-primary);
+  border-radius: 50%;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+}
+
+/* Profile Header */
+.profile-header {
+  margin-bottom: 32px;
+}
+
+.character-name {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--text-primary), var(--warm-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.character-title {
+  font-size: 1.2rem;
+  color: var(--warm-primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.character-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.character-subtitle em {
+  color: var(--cyan);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* ============================================
+   QUOTE SECTION - Garbled Communication
+   ============================================ */
+
+.quote-section {
+  margin-bottom: 32px;
+}
+
+.quote-box {
+  background: linear-gradient(135deg, rgba(232, 149, 110, 0.08), rgba(0, 242, 254, 0.05));
+  border-left: 3px solid var(--warm-primary);
+  padding: 16px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-box::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 3rem;
+  opacity: 0.1;
+  color: var(--warm-primary);
+}
+
+.quote-bubbles {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(139, 153, 173, 0.2);
+  color: var(--text-muted);
+  border: 1px solid rgba(139, 153, 173, 0.3);
+}
+
+.bubble.es {
+  background: rgba(232, 149, 110, 0.15);
+  color: var(--warm-primary);
+  border-color: var(--warm-primary);
+}
+
+.bubble.ja {
+  background: rgba(0, 242, 254, 0.15);
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.bubble.en {
+  background: rgba(200, 200, 200, 0.1);
+  color: var(--text-secondary);
+}
+
+.quote-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.quote-text em {
+  color: var(--warm-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ============================================
+   COMBAT DEMO - Interactive Section
+   ============================================ */
+
+.combat-demo {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.demo-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.punch-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.attack-btn {
+  background: linear-gradient(135deg, var(--magenta), #ff2a75);
+  color: white;
+  border: 2px solid var(--magenta);
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
+  align-items: center;
+  white-space: nowrap;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
 }
 
-.tags-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.origin-tag {
-  background: rgba(0, 242, 254, 0.1);
-  color: #00f2fe;
-  border: 1px solid #00f2fe;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.gang-tag {
-  background: rgba(255, 255, 255, 0.05);
-  color: #aaa;
-  border: 1px solid #444;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: 2.3rem;
-  margin-bottom: 2px;
-  color: #fff;
-}
-
-.subtitle {
-  color: #00f2fe;
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-/* Quote Box */
-.quote-box {
-  background: #0b0d13;
-  border-left: 3px solid #ff0055;
-  padding: 10px 14px;
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 15px;
-  font-style: italic;
-  color: #d1d5db;
+.btn-text {
+  display: block;
   font-size: 0.9rem;
+  font-weight: 700;
 }
 
-/* Interactive Attack Button */
-#attackBtn {
-  margin-bottom: 20px;
-  padding: 12px 20px;
-  background: #ff0055;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.2s ease;
-  align-self: flex-start;
-  box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+.btn-subtext {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 2px;
 }
 
-#attackBtn:hover {
-  background: #ff2a75;
-  box-shadow: 0 0 18px rgba(255, 0, 85, 0.7);
+.attack-btn:hover {
+  background: linear-gradient(135deg, #ff2a75, #ff4499);
+  box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+  transform: translateY(-2px);
 }
 
-#attackBtn:active {
+.attack-btn:active {
   transform: scale(0.95);
 }
 
-/* Stats Grid */
+.miss-counter {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--warm-primary);
+}
+
+/* ============================================
+   STATS SECTION - Core Profile Grid
+   ============================================ */
+
+.stats-section {
+  margin-bottom: 32px;
+}
+
+.stats-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
 }
 
 .stat-card {
-  background: #0b0d13;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #232d42;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.stat-card h3 {
-  font-size: 0.8rem;
-  color: #8a99ad;
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--warm-primary);
+  background: linear-gradient(135deg, rgba(232, 149, 110, 0.05), var(--dark-card));
+  transform: translateY(-4px);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-content h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 3px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
-.stat-card p {
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.stat-value.high {
+  color: var(--warm-primary);
+}
+
+.stat-value.low {
+  color: var(--text-secondary);
+}
+
+.stat-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ============================================
+   ARCHETYPES & CONTEXT
+   ============================================ */
+
+.archetypes {
+  margin-bottom: 24px;
+}
+
+.archetypes-title {
   font-size: 0.85rem;
-  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
-/* Responsive adjustment for mobile screens */
-@media (max-width: 650px) {
-  .profile-card {
+.archetype-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.archetype-tag {
+  background: linear-gradient(135deg, rgba(232, 149, 110, 0.15), rgba(0, 242, 254, 0.05));
+  border: 1px solid rgba(232, 149, 110, 0.3);
+  color: var(--warm-primary);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.archetype-tag:hover {
+  background: linear-gradient(135deg, rgba(232, 149, 110, 0.25), rgba(0, 242, 254, 0.1));
+  border-color: var(--warm-primary);
+}
+
+.context-box {
+  background: linear-gradient(135deg, rgba(255, 0, 85, 0.08), rgba(19, 24, 36, 0.8));
+  border: 1px solid rgba(255, 0, 85, 0.2);
+  padding: 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.context-box h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--magenta);
+}
+
+.context-box p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .container {
     flex-direction: column;
-    align-items: center;
+    gap: 32px;
   }
-  .image-wrapper {
+
+  .character-visual {
+    flex: 1;
     width: 100%;
-    height: 320px;
+  }
+
+  .character-name {
+    font-size: 2.2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  .pressure-gauge {
+    display: none;
+  }
+
+  .character-name {
+    font-size: 1.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .punch-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .attack-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-container {
+    top: 10px;
+    right: 10px;
+  }
+
+  .music-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .container {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .character-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-header {
+    margin-bottom: 20px;
+  }
+
+  .quote-box {
+    padding: 12px;
+  }
+
+  .quote-text {
+    font-size: 0.85rem;
+  }
+
+  .threat-item {
+    grid-template-columns: 80px 1fr 35px;
+    gap: 8px;
   }
 }
