@@ -1,98 +1,50 @@
-// Game State
+// Interactive Script
 let missCount = 0;
 
-// DOM Elements
 const musicBtn = document.getElementById('musicToggle');
 const audio = document.getElementById('bgm');
 const punchBtn = document.getElementById('punchBtn');
 const portraitImg = document.getElementById('portraitImg');
 const missCountEl = document.querySelector('.miss-count');
 const dodgeIndicator = document.getElementById('dodgeIndicator');
-const controlText = document.querySelector('.control-text');
 
-// Audio Toggle Logic
 if (musicBtn && audio) {
   musicBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
-      controlText.textContent = 'Pause BGM';
-      musicBtn.style.background = '#2b2d42';
+      musicBtn.textContent = 'Pause BGM';
+      musicBtn.style.background = '#2f2f2f';
       musicBtn.style.color = '#ffffff';
     } else {
       audio.pause();
-      controlText.textContent = 'Play BGM';
-      musicBtn.style.background = 'rgba(255, 255, 255, 0.85)';
-      musicBtn.style.color = '#2b2d42';
+      musicBtn.textContent = 'Play BGM';
+      musicBtn.style.background = '#ffffff';
+      musicBtn.style.color = '#37352f';
     }
   });
 }
 
-// Interactive Evasion / Las Cintas Mechanic
-const dodgeMessages = [
-  'CHUCHA.',
-  'QUÉ FUE?',
-  'NI CERCA.',
-  'TAS LENTO.',
-  'TE FUISTE.',
-  'MUY TARDE.',
-  'NO ME VISTE.',
-  'SUAVE.',
-  'TRANQUI.',
-  'PURA BULLA.',
-  'TE LEÍ.',
-  'FÁCIL.',
-  'YA PUES.',
-  'CÁLMATE.',
-  'POR FAVOR.',
-  '¿ESO ERA?',
-  'CASI.',
-  'FALLASTE.',
-  'MUY OBVIO.',
-  'NO LLEGASTE.'
-];
+const dodgeMessages = ['DODGED!', 'TOO SLOW!', 'QUÉ SOPA?', 'MISSED!', 'TRANQUILO!'];
 
 if (punchBtn && portraitImg) {
   punchBtn.addEventListener('click', () => {
     if (punchBtn.disabled) return;
 
     missCount++;
-    if (missCountEl) {
-      missCountEl.textContent = missCount;
-    }
+    if (missCountEl) missCountEl.textContent = missCount;
 
     punchBtn.disabled = true;
 
-    const xShift = (Math.random() - 0.5) * 50;
-    const yShift = (Math.random() - 0.5) * 25;
+    const xShift = (Math.random() - 0.5) * 40;
+    const yShift = (Math.random() - 0.5) * 20;
     const message = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 
     gsap.timeline()
-      .to(portraitImg, {
-        x: xShift,
-        y: yShift,
-        duration: 0.1,
-        ease: 'power2.out'
-      }, 0)
-      .to(dodgeIndicator, {
-        textContent: message,
-        opacity: 1,
-        scale: 1,
-        duration: 0.15,
-        ease: 'back.out'
-      }, 0)
-      .to(portraitImg, {
-        x: 0,
-        y: 0,
-        duration: 0.4,
-        ease: 'elastic.out(1, 0.5)'
-      }, 0.12)
-      .to(dodgeIndicator, {
-        opacity: 0,
-        duration: 0.25
-      }, 0.35);
+      .to(portraitImg, { x: xShift, y: yShift, duration: 0.1, ease: 'power2.out' }, 0)
+      .to(dodgeIndicator, { textContent: message, opacity: 1, duration: 0.12 }, 0)
+      .to(portraitImg, { x: 0, y: 0, duration: 0.35, ease: 'elastic.out(1, 0.5)' }, 0.12)
+      .to(dodgeIndicator, { opacity: 0, duration: 0.2 }, 0.3);
 
-    setTimeout(() => {
-      punchBtn.disabled = false;
-    }, 250);
+    setTimeout(() => { punchBtn.disabled = false; }, 250);
   });
 }
