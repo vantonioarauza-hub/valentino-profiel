@@ -1,29 +1,73 @@
-// Interactive Script
+// Game & Player State
 let missCount = 0;
+let currentTrackIndex = 0;
 
-const musicBtn = document.getElementById('musicToggle');
-const audio = document.getElementById('bgm');
+// Playlist Data
+const playlist = [
+  { title: "01. Coastal Vibe (Lofi)", src: "track1.mp3" },
+  { title: "02. Panama Beats (Latin Rhythm)", src: "track2.mp3" },
+  { title: "03. Kazemachi Sunset (Ambient)", src: "track3.mp3" }
+];
+
+// DOM Elements
+const audioPlayer = document.getElementById('audioPlayer');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const prevTrackBtn = document.getElementById('prevTrackBtn');
+const nextTrackBtn = document.getElementById('nextTrackBtn');
+const trackTitle = document.getElementById('trackTitle');
+
 const punchBtn = document.getElementById('punchBtn');
 const portraitImg = document.getElementById('portraitImg');
 const missCountEl = document.querySelector('.miss-count');
 const dodgeIndicator = document.getElementById('dodgeIndicator');
 
-if (musicBtn && audio) {
-  musicBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      musicBtn.textContent = 'Pause BGM';
-      musicBtn.style.background = '#2f2f2f';
-      musicBtn.style.color = '#ffffff';
+const bagItems = document.querySelectorAll('.bag-item');
+const bagInspector = document.getElementById('bagInspector');
+
+// Multi-Track Audio Logic
+function loadTrack(index) {
+  currentTrackIndex = index;
+  audioPlayer.src = playlist[currentTrackIndex].src;
+  trackTitle.textContent = playlist[currentTrackIndex].title;
+}
+
+if (playPauseBtn && audioPlayer) {
+  playPauseBtn.addEventListener('click', () => {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playPauseBtn.textContent = '⏸ Pause';
     } else {
-      audio.pause();
-      musicBtn.textContent = 'Play BGM';
-      musicBtn.style.background = '#ffffff';
-      musicBtn.style.color = '#37352f';
+      audioPlayer.pause();
+      playPauseBtn.textContent = '▶ Play';
     }
+  });
+
+  prevTrackBtn.addEventListener('click', () => {
+    let newIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+    loadTrack(newIndex);
+    audioPlayer.play();
+    playPauseBtn.textContent = '⏸ Pause';
+  });
+
+  nextTrackBtn.addEventListener('click', () => {
+    let newIndex = (currentTrackIndex + 1) % playlist.length;
+    loadTrack(newIndex);
+    audioPlayer.play();
+    playPauseBtn.textContent = '⏸ Pause';
   });
 }
 
+// Interactive Messenger Bag Inspector
+if (bagItems && bagInspector) {
+  bagItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const description = item.getAttribute('data-desc');
+      bagInspector.textContent = description;
+    });
+  });
+}
+
+// Dodge Mechanic
 const dodgeMessages = ['DODGED!', 'TOO SLOW!', 'QUÉ SOPA?', 'MISSED!', 'TRANQUILO!'];
 
 if (punchBtn && portraitImg) {
